@@ -55,7 +55,7 @@ impl Board {
 			}
 		} else {
 			Self {
-				slots: self.slots.clone(),
+				slots: self.slots,
 			}
 		}
 	}
