@@ -31,7 +31,7 @@ impl Board {
 
 					Self {
 						slots: new_slots.to_vec(),
-					 }
+					}
 				},
 				PlayerTurn::PlayerTwo => {
 					let new_slots = &mut self.get_slots();
