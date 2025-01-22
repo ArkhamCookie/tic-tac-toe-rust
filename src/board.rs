@@ -17,16 +17,45 @@ pub struct Board {
 
 impl Board {
 	// TODO: Make click work...
-	pub fn click(&self, slot: usize, turn: PlayerTurn) {
+	pub fn click(self, slot: usize, turn: PlayerTurn) -> Self {
 		// Determine whose turn it is
 		if self.slot_available(slot) {
 			match turn {
 				PlayerTurn::PlayerOne => {
 					// Update slots
+					let new_slots = &mut self.get_slots();
+					new_slots[slot] = Slot::PlayerOne;
+
+					println!("{:?}", new_slots);
+
 					// Update display
+
+					Self {
+						slots: new_slots.to_vec(),
+					 }
 				},
-				PlayerTurn::PlayerTwo => {},
-				PlayerTurn::GameOver => {},
+				PlayerTurn::PlayerTwo => {
+					let new_slots = &mut self.get_slots();
+					new_slots[slot] = Slot::PlayerOne;
+
+					println!("{:?}", new_slots);
+
+					// Update display
+
+					Self {
+						slots: new_slots.to_vec(),
+					 }
+				},
+				PlayerTurn::GameOver => {
+					// Do nothing (since game is over)
+					Self {
+						slots: self.slots,
+					}
+				},
+			}
+		} else {
+			Self {
+				slots: self.slots.clone(),
 			}
 		}
 	}
