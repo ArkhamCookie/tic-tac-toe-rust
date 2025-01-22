@@ -18,8 +18,9 @@ pub struct Board {
 impl Board {
 	// TODO: Make click work...
 	pub fn click(self, slot: usize, turn: PlayerTurn) -> Self {
-		// Determine whose turn it is
+		// Confirm slot is available
 		if self.slot_available(slot) {
+			// Determine whose turn it is
 			match turn {
 				PlayerTurn::PlayerOne => {
 					// Update slots
