@@ -54,6 +54,7 @@ impl Board {
 				},
 			}
 		} else {
+			// Do nothing (since not a vaild slot)
 			Self {
 				slots: self.slots,
 			}
