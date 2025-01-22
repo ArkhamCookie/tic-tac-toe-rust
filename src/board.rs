@@ -26,8 +26,6 @@ impl Board {
 					let new_slots = &mut self.get_slots();
 					new_slots[slot] = Slot::PlayerOne;
 
-					println!("{:?}", new_slots);
-
 					// Update display
 
 					Self {
@@ -37,8 +35,6 @@ impl Board {
 				PlayerTurn::PlayerTwo => {
 					let new_slots = &mut self.get_slots();
 					new_slots[slot] = Slot::PlayerTwo;
-
-					println!("{:?}", new_slots);
 
 					// Update display
 
