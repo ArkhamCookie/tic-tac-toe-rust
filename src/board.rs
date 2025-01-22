@@ -32,7 +32,7 @@ impl Board {
 					Self {
 						slots: new_slots.to_vec(),
 					}
-				},
+				}
 				PlayerTurn::PlayerTwo => {
 					let new_slots = &mut self.get_slots();
 					new_slots[slot] = Slot::PlayerTwo;
@@ -41,20 +41,16 @@ impl Board {
 
 					Self {
 						slots: new_slots.to_vec(),
-					 }
-				},
+					}
+				}
 				PlayerTurn::GameOver => {
 					// Do nothing (since game is over)
-					Self {
-						slots: self.slots,
-					}
-				},
+					Self { slots: self.slots }
+				}
 			}
 		} else {
 			// Do nothing (since not a vaild slot)
-			Self {
-				slots: self.slots,
-			}
+			Self { slots: self.slots }
 		}
 	}
 
