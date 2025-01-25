@@ -96,7 +96,7 @@ fn check_line_horizontal(board: &Board, line: u8) -> WinnerData {
 			}
 
 			if slots[3] == slots[4] && slots[3] == slots[5] {
-				match slots[4] {
+				match slots[3] {
 					Slot::PlayerOne => {
 						return WinnerData {
 							winner: Winner::PlayerOne,
