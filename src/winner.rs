@@ -421,6 +421,28 @@ mod tests {
 		)
 	}
 
+	/// Test winner OneDiagonal
+	#[test]
+	fn one_diagonal() {
+		let mut board = Board::new();
+
+		// Setup win with OneDiagonal
+		board = board.click(2, PlayerTurn::PlayerOne);
+		board = board.click(4, PlayerTurn::PlayerOne);
+		board = board.click(6, PlayerTurn::PlayerOne);
+
+		// Get winner data
+		let winner_data = check_winner(board);
+
+		assert_eq!(
+			WinnerData {
+				winner: Winner::PlayerOne,
+				line: Line::OneDiagonal,
+			},
+			winner_data
+		)
+	}
+
 	/// Test winner ZeroHorizonal
 	#[test]
 	fn zero_horizonal() {
