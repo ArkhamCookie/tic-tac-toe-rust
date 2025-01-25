@@ -574,4 +574,19 @@ mod tests {
 			winner_data
 		)
 	}
+
+	#[test]
+	fn player_two_wins() {
+		let mut board = Board::new();
+
+		// Setup basic win (ZeroHorizonal)
+		board = board.click(0, PlayerTurn::PlayerTwo);
+		board = board.click(1, PlayerTurn::PlayerTwo);
+		board = board.click(2, PlayerTurn::PlayerTwo);
+
+		// Get winner data
+		let winner_data = check_winner(&board);
+
+		assert_eq!(Winner::PlayerTwo, winner_data.winner)
+	}
 }
