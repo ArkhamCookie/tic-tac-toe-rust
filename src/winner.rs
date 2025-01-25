@@ -133,7 +133,7 @@ fn check_line_horizontal(board: &Board, line: u8) -> WinnerData {
 					Slot::PlayerOne => {
 						return WinnerData {
 							winner: Winner::PlayerOne,
-							line: Line::OneHorizontal,
+							line: Line::TwoHorizontal,
 						};
 					}
 					Slot::PlayerTwo => {
