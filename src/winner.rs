@@ -1,10 +1,12 @@
 use crate::board::{Board, Slot};
 
+#[derive(Debug, PartialEq)]
 pub struct WinnerData {
 	pub winner: Winner,
 	pub line: Line,
 }
 
+#[derive(Debug, PartialEq)]
 pub enum Line {
 	ZeroHorizontal,
 	OneHorizontal,
@@ -17,7 +19,7 @@ pub enum Line {
 	None,
 }
 
-#[derive(PartialEq)]
+#[derive(Debug, PartialEq)]
 pub enum Winner {
 	PlayerOne,
 	PlayerTwo,
@@ -388,5 +390,66 @@ fn check_lines_diagonal(board: &Board) -> WinnerData {
 	WinnerData {
 		winner: Winner::None,
 		line: Line::None,
+	}
+}
+
+#[cfg(test)]
+mod tests {
+	use crate::board::Board;
+	use crate::turn::PlayerTurn;
+	use crate::winner::{check_winner, Line, Winner, WinnerData};
+
+	#[test]
+	fn zero_horizonal() {
+		let mut board = Board::new();
+
+		// Setup win with ZeroHorizonal
+		board = board.click(0, PlayerTurn::PlayerOne);
+		board = board.click(1, PlayerTurn::PlayerOne);
+		board = board.click(2, PlayerTurn::PlayerOne);
+
+		// Get winner data
+		let winner_data = check_winner(board);
+
+		assert_eq!(WinnerData{
+			winner: Winner::PlayerOne,
+			line: Line::ZeroHorizontal,
+		}, winner_data)
+	}
+
+	#[test]
+	fn one_horizonal() {
+		let mut board = Board::new();
+
+		// Setup win with OneHorizonal
+		board = board.click(3, PlayerTurn::PlayerOne);
+		board = board.click(4, PlayerTurn::PlayerOne);
+		board = board.click(5, PlayerTurn::PlayerOne);
+
+		// Get winner data
+		let winner_data = check_winner(board);
+
+		assert_eq!(WinnerData {
+			winner: Winner::PlayerOne,
+			line: Line::OneHorizontal,
+		}, winner_data)
+	}
+
+	#[test]
+	fn two_horizonal() {
+		let mut board = Board::new();
+
+		// Setup win with TwoHorizonal
+		board = board.click(6, PlayerTurn::PlayerOne);
+		board = board.click(7, PlayerTurn::PlayerOne);
+		board = board.click(8, PlayerTurn::PlayerOne);
+
+		// Get winner data
+		let winner_data = check_winner(board);
+
+		assert_eq!(WinnerData{
+			winner: Winner::PlayerOne,
+			line: Line::TwoHorizontal,
+		}, winner_data)
 	}
 }
