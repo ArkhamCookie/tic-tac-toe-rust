@@ -399,6 +399,7 @@ mod tests {
 	use crate::turn::PlayerTurn;
 	use crate::winner::{check_winner, Line, Winner, WinnerData};
 
+	/// Test winner ZeroHorizonal
 	#[test]
 	fn zero_horizonal() {
 		let mut board = Board::new();
@@ -420,6 +421,7 @@ mod tests {
 		)
 	}
 
+	/// Test winner OneHorizonal
 	#[test]
 	fn one_horizonal() {
 		let mut board = Board::new();
@@ -441,6 +443,7 @@ mod tests {
 		)
 	}
 
+	/// Test winner TwoHorizonal
 	#[test]
 	fn two_horizonal() {
 		let mut board = Board::new();
@@ -462,6 +465,7 @@ mod tests {
 		)
 	}
 
+	/// Test winner ZeroVertical
 	#[test]
 	fn zero_vertical() {
 		let mut board = Board::new();
@@ -483,6 +487,7 @@ mod tests {
 		)
 	}
 
+	/// Test winner OneVertical
 	#[test]
 	fn one_vertical() {
 		let mut board = Board::new();
@@ -504,6 +509,7 @@ mod tests {
 		)
 	}
 
+	/// Test winner TwoVertical
 	#[test]
 	fn two_vertical() {
 		let mut board = Board::new();
