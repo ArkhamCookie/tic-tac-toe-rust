@@ -24,6 +24,7 @@ pub enum Winner {
 	None,
 }
 
+/// Check **all postions** for a winner
 pub fn check_winner(board: Board) -> WinnerData {
 	let mut winner_data: WinnerData;
 
