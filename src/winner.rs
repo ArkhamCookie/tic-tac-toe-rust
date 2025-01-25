@@ -223,7 +223,7 @@ fn check_line_vertical(board: &Board, line: u8) -> WinnerData {
 			}
 
 			if slots[1] == slots[4] && slots[1] == slots[7] {
-				match slots[0] {
+				match slots[1] {
 					Slot::PlayerOne => {
 						return WinnerData {
 							winner: Winner::PlayerOne,
@@ -256,7 +256,7 @@ fn check_line_vertical(board: &Board, line: u8) -> WinnerData {
 			}
 
 			if slots[2] == slots[5] && slots[2] == slots[8] {
-				match slots[0] {
+				match slots[2] {
 					Slot::PlayerOne => {
 						return WinnerData {
 							winner: Winner::PlayerOne,
