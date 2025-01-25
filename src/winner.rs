@@ -369,20 +369,20 @@ fn check_lines_vertical(board: &Board) -> WinnerData {
 }
 
 /// Check **all postions** for a winner
-pub fn check_winner(board: Board) -> WinnerData {
+pub fn check_winner(board: &Board) -> WinnerData {
 	let mut winner_data: WinnerData;
 
-	winner_data = check_lines_horizontal(&board);
+	winner_data = check_lines_horizontal(board);
 	if winner_data.winner != Winner::None {
 		return winner_data;
 	}
 
-	winner_data = check_lines_vertical(&board);
+	winner_data = check_lines_vertical(board);
 	if winner_data.winner != Winner::None {
 		return winner_data;
 	}
 
-	winner_data = check_lines_diagonal(&board);
+	winner_data = check_lines_diagonal(board);
 	if winner_data.winner != Winner::None {
 		return winner_data;
 	}
@@ -410,7 +410,7 @@ mod tests {
 		board = board.click(8, PlayerTurn::PlayerOne);
 
 		// Get winner data
-		let winner_data = check_winner(board);
+		let winner_data = check_winner(&board);
 
 		assert_eq!(
 			WinnerData {
@@ -432,7 +432,7 @@ mod tests {
 		board = board.click(6, PlayerTurn::PlayerOne);
 
 		// Get winner data
-		let winner_data = check_winner(board);
+		let winner_data = check_winner(&board);
 
 		assert_eq!(
 			WinnerData {
@@ -454,7 +454,7 @@ mod tests {
 		board = board.click(2, PlayerTurn::PlayerOne);
 
 		// Get winner data
-		let winner_data = check_winner(board);
+		let winner_data = check_winner(&board);
 
 		assert_eq!(
 			WinnerData {
@@ -476,7 +476,7 @@ mod tests {
 		board = board.click(5, PlayerTurn::PlayerOne);
 
 		// Get winner data
-		let winner_data = check_winner(board);
+		let winner_data = check_winner(&board);
 
 		assert_eq!(
 			WinnerData {
@@ -498,7 +498,7 @@ mod tests {
 		board = board.click(8, PlayerTurn::PlayerOne);
 
 		// Get winner data
-		let winner_data = check_winner(board);
+		let winner_data = check_winner(&board);
 
 		assert_eq!(
 			WinnerData {
@@ -520,7 +520,7 @@ mod tests {
 		board = board.click(6, PlayerTurn::PlayerOne);
 
 		// Get winner data
-		let winner_data = check_winner(board);
+		let winner_data = check_winner(&board);
 
 		assert_eq!(
 			WinnerData {
@@ -542,7 +542,7 @@ mod tests {
 		board = board.click(7, PlayerTurn::PlayerOne);
 
 		// Get winner data
-		let winner_data = check_winner(board);
+		let winner_data = check_winner(&board);
 
 		assert_eq!(
 			WinnerData {
@@ -564,7 +564,7 @@ mod tests {
 		board = board.click(8, PlayerTurn::PlayerOne);
 
 		// Get winner data
-		let winner_data = check_winner(board);
+		let winner_data = check_winner(&board);
 
 		assert_eq!(
 			WinnerData {
