@@ -399,6 +399,28 @@ mod tests {
 	use crate::turn::PlayerTurn;
 	use crate::winner::{check_winner, Line, Winner, WinnerData};
 
+	/// Test winner ZeroDiagonal
+	#[test]
+	fn zero_diagonal() {
+		let mut board = Board::new();
+
+		// Setup win with ZeroDiagonal
+		board = board.click(0, PlayerTurn::PlayerOne);
+		board = board.click(4, PlayerTurn::PlayerOne);
+		board = board.click(8, PlayerTurn::PlayerOne);
+
+		// Get winner data
+		let winner_data = check_winner(board);
+
+		assert_eq!(
+			WinnerData {
+				winner: Winner::PlayerOne,
+				line: Line::ZeroDiagonal,
+			},
+			winner_data
+		)
+	}
+
 	/// Test winner ZeroHorizonal
 	#[test]
 	fn zero_horizonal() {
