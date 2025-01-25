@@ -461,4 +461,25 @@ mod tests {
 			winner_data
 		)
 	}
+
+	#[test]
+	fn zero_vertical() {
+		let mut board = Board::new();
+
+		// Setup win with ZeroVertical
+		board = board.click(0, PlayerTurn::PlayerOne);
+		board = board.click(3, PlayerTurn::PlayerOne);
+		board = board.click(6, PlayerTurn::PlayerOne);
+
+		// Get winner data
+		let winner_data = check_winner(board);
+
+		assert_eq!(
+			WinnerData {
+				winner: Winner::PlayerOne,
+				line: Line::ZeroVertical,
+			},
+			winner_data
+		)
+	}
 }
