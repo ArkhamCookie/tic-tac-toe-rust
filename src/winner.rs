@@ -411,10 +411,13 @@ mod tests {
 		// Get winner data
 		let winner_data = check_winner(board);
 
-		assert_eq!(WinnerData{
-			winner: Winner::PlayerOne,
-			line: Line::ZeroHorizontal,
-		}, winner_data)
+		assert_eq!(
+			WinnerData {
+				winner: Winner::PlayerOne,
+				line: Line::ZeroHorizontal,
+			},
+			winner_data
+		)
 	}
 
 	#[test]
@@ -429,10 +432,13 @@ mod tests {
 		// Get winner data
 		let winner_data = check_winner(board);
 
-		assert_eq!(WinnerData {
-			winner: Winner::PlayerOne,
-			line: Line::OneHorizontal,
-		}, winner_data)
+		assert_eq!(
+			WinnerData {
+				winner: Winner::PlayerOne,
+				line: Line::OneHorizontal,
+			},
+			winner_data
+		)
 	}
 
 	#[test]
@@ -447,9 +453,12 @@ mod tests {
 		// Get winner data
 		let winner_data = check_winner(board);
 
-		assert_eq!(WinnerData{
-			winner: Winner::PlayerOne,
-			line: Line::TwoHorizontal,
-		}, winner_data)
+		assert_eq!(
+			WinnerData {
+				winner: Winner::PlayerOne,
+				line: Line::TwoHorizontal,
+			},
+			winner_data
+		)
 	}
 }
