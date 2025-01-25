@@ -161,7 +161,7 @@ fn check_line_horizontal(board: &Board, line: u8) -> WinnerData {
 /// Check **all** lines for a winner horizontally
 fn check_lines_horizontal(board: &Board) -> WinnerData {
 	// Loop through all lines to check
-	for i in 0..2 {
+	for i in 0..3 {
 		let winner_data = check_line_horizontal(board, i);
 		if winner_data.winner != Winner::None {
 			return winner_data;
@@ -286,7 +286,7 @@ fn check_line_vertical(board: &Board, line: u8) -> WinnerData {
 /// Check **all** lines for a winner vertically
 fn check_lines_vertical(board: &Board) -> WinnerData {
 	// Loop through all lines to check
-	for i in 0..2 {
+	for i in 0..3 {
 		let winner_data = check_line_vertical(board, i);
 		if winner_data.winner != Winner::None {
 			return winner_data;
@@ -378,7 +378,7 @@ fn check_line_diagonal(board: &Board, line: u8) -> WinnerData {
 /// Check **all** lines diagonally
 fn check_lines_diagonal(board: &Board) -> WinnerData {
 	// Loop through all lines to check
-	for i in 0..1 {
+	for i in 0..2 {
 		let winner_data = check_line_diagonal(board, i);
 		if winner_data.winner != Winner::None {
 			return winner_data;
