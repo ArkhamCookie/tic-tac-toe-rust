@@ -44,7 +44,7 @@ pub fn check_winner(board: Board) -> WinnerData {
 
 	WinnerData {
 		winner: Winner::None,
-		line: Line::None
+		line: Line::None,
 	}
 }
 
@@ -68,14 +68,14 @@ fn check_line_horizontal(board: &Board, line: u8) -> WinnerData {
 							winner: Winner::PlayerOne,
 							line: Line::ZeroHorizontal,
 						};
-					},
+					}
 					Slot::PlayerTwo => {
 						return WinnerData {
 							winner: Winner::PlayerTwo,
 							line: Line::ZeroHorizontal,
 						};
-					},
-					_ => {},
+					}
+					_ => {}
 				}
 			}
 
@@ -83,7 +83,7 @@ fn check_line_horizontal(board: &Board, line: u8) -> WinnerData {
 				winner: Winner::None,
 				line: Line::None,
 			}
-		},
+		}
 		1 => {
 			let slots = board.get_slots();
 
@@ -101,14 +101,14 @@ fn check_line_horizontal(board: &Board, line: u8) -> WinnerData {
 							winner: Winner::PlayerOne,
 							line: Line::OneHorizontal,
 						};
-					},
+					}
 					Slot::PlayerTwo => {
 						return WinnerData {
 							winner: Winner::PlayerTwo,
 							line: Line::OneHorizontal,
 						};
-					},
-					_ => {},
+					}
+					_ => {}
 				}
 			}
 
@@ -116,7 +116,7 @@ fn check_line_horizontal(board: &Board, line: u8) -> WinnerData {
 				winner: Winner::None,
 				line: Line::None,
 			}
-		},
+		}
 		2 => {
 			let slots = board.get_slots();
 
@@ -134,14 +134,14 @@ fn check_line_horizontal(board: &Board, line: u8) -> WinnerData {
 							winner: Winner::PlayerOne,
 							line: Line::OneHorizontal,
 						};
-					},
+					}
 					Slot::PlayerTwo => {
 						return WinnerData {
 							winner: Winner::PlayerTwo,
 							line: Line::TwoHorizontal,
 						};
-					},
-					_ => {},
+					}
+					_ => {}
 				}
 			}
 
@@ -149,12 +149,10 @@ fn check_line_horizontal(board: &Board, line: u8) -> WinnerData {
 				winner: Winner::None,
 				line: Line::None,
 			}
-		},
-		_ => {
-			WinnerData {
-				winner: Winner::None,
-				line: Line::None,
-			}
+		}
+		_ => WinnerData {
+			winner: Winner::None,
+			line: Line::None,
 		},
 	}
 }
@@ -171,7 +169,7 @@ fn check_lines_horizontal(board: &Board) -> WinnerData {
 
 	WinnerData {
 		winner: Winner::None,
-		line: Line::None
+		line: Line::None,
 	}
 }
 
@@ -202,7 +200,7 @@ fn check_line_vertical(board: &Board, line: u8) -> WinnerData {
 							line: Line::ZeroVertical,
 						};
 					}
-					_ => {},
+					_ => {}
 				}
 			}
 
@@ -210,7 +208,7 @@ fn check_line_vertical(board: &Board, line: u8) -> WinnerData {
 				winner: Winner::None,
 				line: Line::None,
 			}
-		},
+		}
 		1 => {
 			let slots = board.get_slots();
 
@@ -235,7 +233,7 @@ fn check_line_vertical(board: &Board, line: u8) -> WinnerData {
 							line: Line::OneVertical,
 						};
 					}
-					_ => {},
+					_ => {}
 				}
 			}
 
@@ -243,7 +241,7 @@ fn check_line_vertical(board: &Board, line: u8) -> WinnerData {
 				winner: Winner::None,
 				line: Line::None,
 			}
-		},
+		}
 		2 => {
 			let slots = board.get_slots();
 
@@ -268,7 +266,7 @@ fn check_line_vertical(board: &Board, line: u8) -> WinnerData {
 							line: Line::TwoVertical,
 						};
 					}
-					_ => {},
+					_ => {}
 				}
 			}
 
@@ -276,12 +274,10 @@ fn check_line_vertical(board: &Board, line: u8) -> WinnerData {
 				winner: Winner::None,
 				line: Line::None,
 			}
-		},
-		_ => {
-			WinnerData {
-				winner: Winner::None,
-				line: Line::None,
-			}
+		}
+		_ => WinnerData {
+			winner: Winner::None,
+			line: Line::None,
 		},
 	}
 }
@@ -298,7 +294,7 @@ fn check_lines_vertical(board: &Board) -> WinnerData {
 
 	WinnerData {
 		winner: Winner::None,
-		line: Line::None
+		line: Line::None,
 	}
 }
 
@@ -329,7 +325,7 @@ fn check_line_diagonal(board: &Board, line: u8) -> WinnerData {
 							line: Line::ZeroDiagonal,
 						};
 					}
-					_ => {},
+					_ => {}
 				}
 			}
 
@@ -337,7 +333,7 @@ fn check_line_diagonal(board: &Board, line: u8) -> WinnerData {
 				winner: Winner::None,
 				line: Line::None,
 			}
-		},
+		}
 		1 => {
 			let slots = board.get_slots();
 
@@ -362,7 +358,7 @@ fn check_line_diagonal(board: &Board, line: u8) -> WinnerData {
 							line: Line::OneDiagonal,
 						};
 					}
-					_ => {},
+					_ => {}
 				}
 			}
 
@@ -370,13 +366,11 @@ fn check_line_diagonal(board: &Board, line: u8) -> WinnerData {
 				winner: Winner::None,
 				line: Line::None,
 			}
-		},
-		_ => {
-			WinnerData {
-				winner: Winner::None,
-				line: Line::None,
-			}
 		}
+		_ => WinnerData {
+			winner: Winner::None,
+			line: Line::None,
+		},
 	}
 }
 
