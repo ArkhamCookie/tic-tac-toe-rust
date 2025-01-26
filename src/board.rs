@@ -88,6 +88,7 @@ mod tests {
 	use crate::board::{Board, Slot};
 	use crate::turn::PlayerTurn;
 
+	/// Test clicking slot 0
 	#[test]
 	fn click_zero() {
 		let mut board = Board::new();
