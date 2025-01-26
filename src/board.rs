@@ -106,4 +106,24 @@ mod tests {
 
 		assert_eq!(Slot::PlayerTwo, slots[0]);
 	}
+
+	/// Test clicking slot 1
+	#[test]
+	fn click_one() {
+		let mut board = Board::new();
+
+		board = board.click(1, PlayerTurn::PlayerOne);
+
+		let slots = board.get_slots();
+
+		assert_eq!(Slot::PlayerOne, slots[1]);
+
+		let mut board = Board::new();
+
+		board = board.click(1, PlayerTurn::PlayerTwo);
+
+		let slots = board.get_slots();
+
+		assert_eq!(Slot::PlayerTwo, slots[1]);
+	}
 }
