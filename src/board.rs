@@ -60,7 +60,7 @@ impl Board {
 	}
 
 	/// Create an empty board
-	pub fn new() -> Board {
+	pub fn new() -> Self {
 		let mut slots = Vec::new();
 
 		for _ in 0..9 {
