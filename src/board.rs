@@ -82,3 +82,28 @@ impl Board {
 		false
 	}
 }
+
+#[cfg(test)]
+mod tests {
+	use crate::board::{Board, Slot};
+	use crate::turn::PlayerTurn;
+
+	#[test]
+	fn click_zero() {
+		let mut board = Board::new();
+
+		board = board.click(0, PlayerTurn::PlayerOne);
+
+		let slots = board.get_slots();
+
+		assert_eq!(Slot::PlayerOne, slots[0]);
+
+		let mut board = Board::new();
+
+		board = board.click(0, PlayerTurn::PlayerTwo);
+
+		let slots = board.get_slots();
+
+		assert_eq!(Slot::PlayerTwo, slots[0]);
+	}
+}
