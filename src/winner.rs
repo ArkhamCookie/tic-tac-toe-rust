@@ -421,7 +421,7 @@ mod tests {
 				line: Line::ZeroDiagonal,
 			},
 			winner_data
-		)
+		);
 	}
 
 	/// Test winner OneDiagonal
@@ -443,7 +443,7 @@ mod tests {
 				line: Line::OneDiagonal,
 			},
 			winner_data
-		)
+		);
 	}
 
 	/// Test winner ZeroHorizonal
@@ -465,7 +465,7 @@ mod tests {
 				line: Line::ZeroHorizontal,
 			},
 			winner_data
-		)
+		);
 	}
 
 	/// Test winner OneHorizonal
@@ -487,7 +487,7 @@ mod tests {
 				line: Line::OneHorizontal,
 			},
 			winner_data
-		)
+		);
 	}
 
 	/// Test winner TwoHorizonal
@@ -509,7 +509,7 @@ mod tests {
 				line: Line::TwoHorizontal,
 			},
 			winner_data
-		)
+		);
 	}
 
 	/// Test winner ZeroVertical
@@ -531,7 +531,7 @@ mod tests {
 				line: Line::ZeroVertical,
 			},
 			winner_data
-		)
+		);
 	}
 
 	/// Test winner OneVertical
@@ -553,7 +553,7 @@ mod tests {
 				line: Line::OneVertical,
 			},
 			winner_data
-		)
+		);
 	}
 
 	/// Test winner TwoVertical
@@ -575,7 +575,7 @@ mod tests {
 				line: Line::TwoVertical,
 			},
 			winner_data
-		)
+		);
 	}
 
 	#[test]
@@ -590,6 +590,6 @@ mod tests {
 		// Get winner data
 		let winner_data = check_winner(&board);
 
-		assert_eq!(Winner::PlayerTwo, winner_data.winner)
+		assert_eq!(Winner::PlayerTwo, winner_data.winner);
 	}
 }
