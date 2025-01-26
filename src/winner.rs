@@ -1,11 +1,13 @@
 use crate::board::{Board, Slot};
 
+/// Who won and where
 #[derive(Debug, PartialEq)]
 pub struct WinnerData {
 	pub winner: Winner,
 	pub line: Line,
 }
 
+/// What line someone won at
 #[derive(Debug, PartialEq)]
 pub enum Line {
 	ZeroDiagonal,
@@ -19,6 +21,7 @@ pub enum Line {
 	None,
 }
 
+/// Who won
 #[derive(Debug, PartialEq)]
 pub enum Winner {
 	PlayerOne,
