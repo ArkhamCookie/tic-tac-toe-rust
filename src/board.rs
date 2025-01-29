@@ -1,7 +1,7 @@
 use crate::turn::PlayerTurn;
 
 /// Slot availability
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq)]
 pub enum Slot {
 	Empty,
 	PlayerOne,
@@ -80,5 +80,29 @@ impl Board {
 		}
 
 		false
+	}
+}
+
+#[cfg(test)]
+mod tests {
+	use crate::board::{Board, Slot};
+	use crate::turn::PlayerTurn;
+
+	/// Click util function
+	fn click(slot: usize, turn: PlayerTurn) -> Slot {
+		let mut board = Board::new();
+
+		board = board.click(slot, turn);
+
+		board.get_slots()[slot]
+	}
+
+	/// Test clicking slots
+	#[test]
+	fn click_test() {
+		for i in 0..10 {
+			assert_eq!(Slot::PlayerOne, click(i, PlayerTurn::PlayerOne));
+			assert_eq!(Slot::PlayerTwo, click(i, PlayerTurn::PlayerTwo));
+		}
 	}
 }
