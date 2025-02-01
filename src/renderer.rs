@@ -3,7 +3,7 @@ use sdl2::rect::Rect;
 use sdl2::render::WindowCanvas;
 use sdl2::video::Window;
 
-use crate::board::{Board, Slot};
+use crate::board::Board;
 
 /// Point on screen
 pub struct Point(pub i32, pub i32);
