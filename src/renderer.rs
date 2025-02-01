@@ -3,13 +3,16 @@ use sdl2::rect::Rect;
 use sdl2::render::WindowCanvas;
 use sdl2::video::Window;
 
+/// Point on screen
 pub struct Point(pub i32, pub i32);
 
+/// Renderer for screen
 pub struct Renderer {
 	canvas: WindowCanvas,
 }
 
 impl Renderer {
+	/// Create a new screen
 	pub fn new(window: Window) -> Result<Renderer, String> {
 		let canvas = window
 			.into_canvas()
@@ -19,6 +22,7 @@ impl Renderer {
 		Ok(Renderer { canvas })
 	}
 
+	/// Draw a horizontal line
 	fn draw_horizontal_line(&mut self, point: &Point) -> Result<(), String> {
 		let Point(x, y) = point;
 
@@ -32,6 +36,7 @@ impl Renderer {
 		Ok(())
 	}
 
+	/// Draw a vertical line
 	fn draw_vertical_line(&mut self, point: &Point) -> Result<(), String> {
 		let Point(x, y) = point;
 
@@ -46,6 +51,7 @@ impl Renderer {
 		Ok(())
 	}
 
+	/// Draw the board
 	fn draw_board(&mut self) -> Result<(), String> {
 		self.draw_vertical_line(&Point(400, 0))?;
 		self.draw_vertical_line(&Point(800, 0))?;
@@ -56,6 +62,7 @@ impl Renderer {
 		Ok(())
 	}
 
+	/// Draw everything to screen
 	pub fn draw(&mut self) -> Result<(), String> {
 		self.draw_board()?;
 
