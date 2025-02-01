@@ -22,11 +22,13 @@ fn main() -> Result<(), String> {
 	'running: loop {
 		for event in event_pump.poll_iter() {
 			match event {
-				Event::Quit { .. }
-				| Event::KeyDown {
-					keycode: Some(Keycode::Escape),
-					..
-				} => break 'running,
+				Event::Quit { .. } => break 'running,
+				Event::KeyDown { keycode: Some(keycode), .. } => {
+					match keycode {
+						Keycode::Escape => break 'running,
+						_ => {},
+					}
+				},
 				_ => {}
 			}
 
