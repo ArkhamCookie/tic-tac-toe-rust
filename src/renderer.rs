@@ -23,13 +23,13 @@ impl Renderer {
 	}
 
 	/// Draw a horizontal line
-	fn draw_horizontal_line(&mut self, point: &Point) -> Result<(), String> {
+	fn draw_horizontal_line(&mut self, length: u32, point: &Point) -> Result<(), String> {
 		let Point(x, y) = point;
 
 		self.canvas.fill_rect(Rect::new(
 			*x,
 			*y,
-			1200,
+			length,
 			10,
 		))?;
 
@@ -37,7 +37,7 @@ impl Renderer {
 	}
 
 	/// Draw a vertical line
-	fn draw_vertical_line(&mut self, point: &Point) -> Result<(), String> {
+	fn draw_vertical_line(&mut self, length: u32, point: &Point) -> Result<(), String> {
 		let Point(x, y) = point;
 
 		self.canvas.set_draw_color(Color::WHITE);
@@ -45,7 +45,7 @@ impl Renderer {
 			*x,
 			*y,
 			10,
-			1200,
+			length,
 		))?;
 
 		Ok(())
@@ -53,11 +53,11 @@ impl Renderer {
 
 	/// Draw the board
 	fn draw_board(&mut self) -> Result<(), String> {
-		self.draw_vertical_line(&Point(400, 0))?;
-		self.draw_vertical_line(&Point(800, 0))?;
+		self.draw_vertical_line(1000, &Point(400, 100))?;
+		self.draw_vertical_line(1000, &Point(800, 100))?;
 
-		self.draw_horizontal_line(&Point(0, 400))?;
-		self.draw_horizontal_line(&Point(0, 800))?;
+		self.draw_horizontal_line(1000, &Point(100, 400))?;
+		self.draw_horizontal_line(1000,&Point(100, 800))?;
 
 		Ok(())
 	}
