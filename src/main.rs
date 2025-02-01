@@ -32,7 +32,7 @@ fn main() -> Result<(), String> {
 				_ => {}
 			}
 
-			renderer.draw()?;
+			renderer.draw(&board)?;
 		}
 	}
 

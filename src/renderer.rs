@@ -3,6 +3,8 @@ use sdl2::rect::Rect;
 use sdl2::render::WindowCanvas;
 use sdl2::video::Window;
 
+use crate::board::{Board, Slot};
+
 /// Point on screen
 pub struct Point(pub i32, pub i32);
 
@@ -63,7 +65,7 @@ impl Renderer {
 	}
 
 	/// Draw everything to screen
-	pub fn draw(&mut self) -> Result<(), String> {
+	pub fn draw(&mut self, board: &Board) -> Result<(), String> {
 		self.draw_board()?;
 
 		self.canvas.present();
