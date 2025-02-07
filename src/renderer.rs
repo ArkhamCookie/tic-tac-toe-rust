@@ -28,12 +28,7 @@ impl Renderer {
 	fn draw_horizontal_line(&mut self, length: u32, point: &Point) -> Result<(), String> {
 		let Point(x, y) = point;
 
-		self.canvas.fill_rect(Rect::new(
-			*x,
-			*y,
-			length,
-			10,
-		))?;
+		self.canvas.fill_rect(Rect::new(*x, *y, length, 10))?;
 
 		Ok(())
 	}
@@ -43,12 +38,7 @@ impl Renderer {
 		let Point(x, y) = point;
 
 		self.canvas.set_draw_color(Color::WHITE);
-		self.canvas.fill_rect(Rect::new(
-			*x,
-			*y,
-			10,
-			length,
-		))?;
+		self.canvas.fill_rect(Rect::new(*x, *y, 10, length))?;
 
 		Ok(())
 	}
