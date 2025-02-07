@@ -14,7 +14,7 @@ fn main() -> Result<(), String> {
 		.build()
 		.map_err(|error| error.to_string())?;
 
-	let mut renderer= Renderer::new(window)?;
+	let mut renderer = Renderer::new(window)?;
 	let mut event_pump = sdl_context.event_pump().unwrap();
 
 	let board = Board::new();
@@ -23,11 +23,12 @@ fn main() -> Result<(), String> {
 		for event in event_pump.poll_iter() {
 			match event {
 				Event::Quit { .. } => break 'running,
-				Event::KeyDown { keycode: Some(keycode), .. } => {
-					match keycode {
-						Keycode::Escape => break 'running,
-						_ => {},
-					}
+				Event::KeyDown {
+					keycode: Some(keycode),
+					..
+				} => match keycode {
+					Keycode::Escape => break 'running,
+					_ => {}
 				},
 				_ => {}
 			}
