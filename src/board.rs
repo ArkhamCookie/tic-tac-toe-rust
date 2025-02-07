@@ -100,7 +100,7 @@ mod tests {
 	/// Test clicking slots
 	#[test]
 	fn click_test() {
-		for i in 0..10 {
+		for i in 0..9 {
 			assert_eq!(Slot::PlayerOne, click(i, PlayerTurn::PlayerOne));
 			assert_eq!(Slot::PlayerTwo, click(i, PlayerTurn::PlayerTwo));
 		}
