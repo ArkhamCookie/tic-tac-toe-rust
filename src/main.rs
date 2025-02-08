@@ -30,7 +30,7 @@ fn main() -> Result<(), String> {
 					keycode: Some(keycode),
 					..
 				} => match keycode {
-					Keycode::Escape => break 'running,
+					Keycode::Escape => { break 'running; }
 					_ => {}
 				},
 				Event::MouseButtonDown { x, y, .. } => {
