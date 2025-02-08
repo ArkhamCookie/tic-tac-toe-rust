@@ -34,34 +34,37 @@ fn main() -> Result<(), String> {
 					_ => {}
 				},
 				Event::MouseButtonDown { x, y, .. } => {
-					if click(&board, &turn, x, y) != Err(String::from("slot not available")) {
-						board = click(&board, &turn, x, y)?;
+					// Confirm click was on an empty slot
+					if click(&board, &turn, x, y) == Err(String::from("slot not available")) {
+						continue 'running;
+					}
+					board = click(&board, &turn, x, y)?;
 
-						let winner = check_winner(&board);
+					// Check if there is a winner
+					let winner = check_winner(&board);
+					if winner.winner != Winner::None {
+						turn = PlayerTurn::GameOver;
+					}
 
-						if winner.winner != Winner::None {
-							turn = PlayerTurn::GameOver;
+					// Handle switching turns & game overs
+					match turn {
+						PlayerTurn::PlayerOne => {
+							turn = PlayerTurn::PlayerTwo;
 						}
-
-						match turn {
-							PlayerTurn::PlayerOne => {
-								turn = PlayerTurn::PlayerTwo;
-							}
-							PlayerTurn::PlayerTwo => {
-								turn = PlayerTurn::PlayerOne;
-							}
-							PlayerTurn::GameOver => match winner.winner {
-								Winner::PlayerOne => {
-									println!("Player 1 wins!");
-									break 'running;
-								}
-								Winner::PlayerTwo => {
-									println!("Player 2 wins!");
-									break 'running;
-								}
-								Winner::None => {}
-							},
+						PlayerTurn::PlayerTwo => {
+							turn = PlayerTurn::PlayerOne;
 						}
+						PlayerTurn::GameOver => match winner.winner {
+							Winner::PlayerOne => {
+								println!("Player 1 wins!");
+								break 'running;
+							}
+							Winner::PlayerTwo => {
+								println!("Player 2 wins!");
+								break 'running;
+							}
+							Winner::None => {}
+						},
 					}
 				}
 				_ => {}
