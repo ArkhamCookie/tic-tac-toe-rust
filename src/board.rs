@@ -9,14 +9,14 @@ pub enum Slot {
 }
 
 /// Tic-tac-toe board
-#[derive(Debug, Default)]
+#[derive(Clone, Debug, Default)]
 pub struct Board {
 	/// Slots on board
 	slots: Vec<Slot>,
 }
 
 impl Board {
-	pub fn place(self, slot: usize, turn: PlayerTurn) -> Self {
+	pub fn place(self, slot: usize, turn: &PlayerTurn) -> Self {
 		// Confirm slot is available
 		if self.slot_available(slot) {
 			// Determine whose turn it is
