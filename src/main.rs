@@ -44,10 +44,20 @@ fn main() -> Result<(), String> {
 					}
 
 					match turn {
-						PlayerTurn::PlayerOne => { turn = PlayerTurn::PlayerTwo; },
-						PlayerTurn::PlayerTwo => { turn = PlayerTurn::PlayerOne; },
-						PlayerTurn::GameOver => {
-							println!("{:?}", winner)
+						PlayerTurn::PlayerOne => {
+							turn = PlayerTurn::PlayerTwo;
+						}
+						PlayerTurn::PlayerTwo => {
+							turn = PlayerTurn::PlayerOne;
+						}
+						PlayerTurn::GameOver => match winner.winner {
+							Winner::PlayerOne => {
+								println!("Player 1 wins!")
+							}
+							Winner::PlayerTwo => {
+								println!("Player 2 wins!")
+							}
+							Winner::None => {}
 						},
 					}
 				}
