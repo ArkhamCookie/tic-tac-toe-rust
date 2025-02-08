@@ -408,9 +408,9 @@ mod tests {
 		let mut board = Board::new();
 
 		// Setup win with ZeroDiagonal
-		board = board.place(0, PlayerTurn::PlayerOne);
-		board = board.place(4, PlayerTurn::PlayerOne);
-		board = board.place(8, PlayerTurn::PlayerOne);
+		board = board.place(0, &PlayerTurn::PlayerOne);
+		board = board.place(4, &PlayerTurn::PlayerOne);
+		board = board.place(8, &PlayerTurn::PlayerOne);
 
 		// Get winner data
 		let winner_data = check_winner(&board);
@@ -430,9 +430,9 @@ mod tests {
 		let mut board = Board::new();
 
 		// Setup win with OneDiagonal
-		board = board.place(2, PlayerTurn::PlayerOne);
-		board = board.place(4, PlayerTurn::PlayerOne);
-		board = board.place(6, PlayerTurn::PlayerOne);
+		board = board.place(2, &PlayerTurn::PlayerOne);
+		board = board.place(4, &PlayerTurn::PlayerOne);
+		board = board.place(6, &PlayerTurn::PlayerOne);
 
 		// Get winner data
 		let winner_data = check_winner(&board);
@@ -452,9 +452,9 @@ mod tests {
 		let mut board = Board::new();
 
 		// Setup win with ZeroHorizonal
-		board = board.place(0, PlayerTurn::PlayerOne);
-		board = board.place(1, PlayerTurn::PlayerOne);
-		board = board.place(2, PlayerTurn::PlayerOne);
+		board = board.place(0, &PlayerTurn::PlayerOne);
+		board = board.place(1, &PlayerTurn::PlayerOne);
+		board = board.place(2, &PlayerTurn::PlayerOne);
 
 		// Get winner data
 		let winner_data = check_winner(&board);
@@ -474,9 +474,9 @@ mod tests {
 		let mut board = Board::new();
 
 		// Setup win with OneHorizonal
-		board = board.place(3, PlayerTurn::PlayerOne);
-		board = board.place(4, PlayerTurn::PlayerOne);
-		board = board.place(5, PlayerTurn::PlayerOne);
+		board = board.place(3, &PlayerTurn::PlayerOne);
+		board = board.place(4, &PlayerTurn::PlayerOne);
+		board = board.place(5, &PlayerTurn::PlayerOne);
 
 		// Get winner data
 		let winner_data = check_winner(&board);
@@ -496,9 +496,9 @@ mod tests {
 		let mut board = Board::new();
 
 		// Setup win with TwoHorizonal
-		board = board.place(6, PlayerTurn::PlayerOne);
-		board = board.place(7, PlayerTurn::PlayerOne);
-		board = board.place(8, PlayerTurn::PlayerOne);
+		board = board.place(6, &PlayerTurn::PlayerOne);
+		board = board.place(7, &PlayerTurn::PlayerOne);
+		board = board.place(8, &PlayerTurn::PlayerOne);
 
 		// Get winner data
 		let winner_data = check_winner(&board);
@@ -518,9 +518,9 @@ mod tests {
 		let mut board = Board::new();
 
 		// Setup win with ZeroVertical
-		board = board.place(0, PlayerTurn::PlayerOne);
-		board = board.place(3, PlayerTurn::PlayerOne);
-		board = board.place(6, PlayerTurn::PlayerOne);
+		board = board.place(0, &PlayerTurn::PlayerOne);
+		board = board.place(3, &PlayerTurn::PlayerOne);
+		board = board.place(6, &PlayerTurn::PlayerOne);
 
 		// Get winner data
 		let winner_data = check_winner(&board);
@@ -540,9 +540,9 @@ mod tests {
 		let mut board = Board::new();
 
 		// Setup win with OneVertical
-		board = board.place(1, PlayerTurn::PlayerOne);
-		board = board.place(4, PlayerTurn::PlayerOne);
-		board = board.place(7, PlayerTurn::PlayerOne);
+		board = board.place(1, &PlayerTurn::PlayerOne);
+		board = board.place(4, &PlayerTurn::PlayerOne);
+		board = board.place(7, &PlayerTurn::PlayerOne);
 
 		// Get winner data
 		let winner_data = check_winner(&board);
@@ -562,9 +562,9 @@ mod tests {
 		let mut board = Board::new();
 
 		// Setup win with TwoVertical
-		board = board.place(2, PlayerTurn::PlayerOne);
-		board = board.place(5, PlayerTurn::PlayerOne);
-		board = board.place(8, PlayerTurn::PlayerOne);
+		board = board.place(2, &PlayerTurn::PlayerOne);
+		board = board.place(5, &PlayerTurn::PlayerOne);
+		board = board.place(8, &PlayerTurn::PlayerOne);
 
 		// Get winner data
 		let winner_data = check_winner(&board);
@@ -583,9 +583,9 @@ mod tests {
 		let mut board = Board::new();
 
 		// Setup basic win (ZeroHorizonal)
-		board = board.place(0, PlayerTurn::PlayerTwo);
-		board = board.place(1, PlayerTurn::PlayerTwo);
-		board = board.place(2, PlayerTurn::PlayerTwo);
+		board = board.place(0, &PlayerTurn::PlayerTwo);
+		board = board.place(1, &PlayerTurn::PlayerTwo);
+		board = board.place(2, &PlayerTurn::PlayerTwo);
 
 		// Get winner data
 		let winner_data = check_winner(&board);

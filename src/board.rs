@@ -89,7 +89,7 @@ mod tests {
 	fn place(slot: usize, turn: PlayerTurn) -> Slot {
 		let mut board = Board::new();
 
-		board = board.place(slot, turn);
+		board = board.place(slot, &turn);
 
 		board.get_slots()[slot]
 	}
