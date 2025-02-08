@@ -1,5 +1,7 @@
 use tic_tac_toe::board::Board;
+use tic_tac_toe::click;
 use tic_tac_toe::renderer::Renderer;
+use tic_tac_toe::turn::PlayerTurn;
 
 use sdl2::event::Event;
 use sdl2::keyboard::Keycode;
@@ -16,8 +18,8 @@ fn main() -> Result<(), String> {
 
 	let mut renderer = Renderer::new(window)?;
 	let mut event_pump = sdl_context.event_pump().unwrap();
-
-	let board = Board::new();
+	let mut turn = PlayerTurn::PlayerOne;
+	let mut board = Board::new();
 
 	'running: loop {
 		for event in event_pump.poll_iter() {
@@ -30,6 +32,15 @@ fn main() -> Result<(), String> {
 					Keycode::Escape => break 'running,
 					_ => {}
 				},
+				Event::MouseButtonDown { x, y, .. } => {
+					board = click::click(&board, &turn, x, y);
+
+					if turn == PlayerTurn::PlayerOne {
+						turn = PlayerTurn::PlayerTwo;
+					} else if turn == PlayerTurn::PlayerTwo {
+						turn = PlayerTurn::PlayerOne;
+					}
+				}
 				_ => {}
 			}
 

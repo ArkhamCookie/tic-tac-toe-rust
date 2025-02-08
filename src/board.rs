@@ -9,15 +9,14 @@ pub enum Slot {
 }
 
 /// Tic-tac-toe board
-#[derive(Debug, Default)]
+#[derive(Clone, Debug, Default)]
 pub struct Board {
 	/// Slots on board
 	slots: Vec<Slot>,
 }
 
 impl Board {
-	// TODO: Make click work...
-	pub fn click(self, slot: usize, turn: PlayerTurn) -> Self {
+	pub fn place(self, slot: usize, turn: &PlayerTurn) -> Self {
 		// Confirm slot is available
 		if self.slot_available(slot) {
 			// Determine whose turn it is
@@ -87,20 +86,20 @@ mod tests {
 	use crate::turn::PlayerTurn;
 
 	/// Click util function
-	fn click(slot: usize, turn: PlayerTurn) -> Slot {
+	fn place(slot: usize, turn: PlayerTurn) -> Slot {
 		let mut board = Board::new();
 
-		board = board.click(slot, turn);
+		board = board.place(slot, &turn);
 
 		board.get_slots()[slot]
 	}
 
 	/// Test clicking slots
 	#[test]
-	fn click_test() {
+	fn place_test() {
 		for i in 0..9 {
-			assert_eq!(Slot::PlayerOne, click(i, PlayerTurn::PlayerOne));
-			assert_eq!(Slot::PlayerTwo, click(i, PlayerTurn::PlayerTwo));
+			assert_eq!(Slot::PlayerOne, place(i, PlayerTurn::PlayerOne));
+			assert_eq!(Slot::PlayerTwo, place(i, PlayerTurn::PlayerTwo));
 		}
 	}
 }
