@@ -28,7 +28,6 @@ impl Board {
 					new_slots[slot] = Slot::PlayerOne;
 
 					// Update display
-
 					Self {
 						slots: new_slots.to_vec(),
 					}
@@ -38,7 +37,6 @@ impl Board {
 					new_slots[slot] = Slot::PlayerTwo;
 
 					// Update display
-
 					Self {
 						slots: new_slots.to_vec(),
 					}
@@ -100,7 +98,7 @@ mod tests {
 	/// Test clicking slots
 	#[test]
 	fn click_test() {
-		for i in 0..10 {
+		for i in 0..9 {
 			assert_eq!(Slot::PlayerOne, click(i, PlayerTurn::PlayerOne));
 			assert_eq!(Slot::PlayerTwo, click(i, PlayerTurn::PlayerTwo));
 		}
