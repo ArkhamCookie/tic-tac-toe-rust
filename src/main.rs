@@ -1,5 +1,5 @@
 use tic_tac_toe::board::Board;
-use tic_tac_toe::click;
+use tic_tac_toe::click::click;
 use tic_tac_toe::renderer::Renderer;
 use tic_tac_toe::turn::PlayerTurn;
 use tic_tac_toe::winner::{check_winner, Winner};
@@ -34,7 +34,7 @@ fn main() -> Result<(), String> {
 					_ => {}
 				},
 				Event::MouseButtonDown { x, y, .. } => {
-					board = click::click(&board, &turn, x, y);
+					board = click(&board, &turn, x, y);
 
 					// let winner = check_winner(&board);
 					let winner = check_winner(&board);
