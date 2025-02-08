@@ -31,12 +31,6 @@ fn main() -> Result<(), String> {
 					..
 				} => match keycode {
 					Keycode::Escape => { break 'running; }
-					Keycode::R => {
-						board = Board::new();
-						turn = PlayerTurn::PlayerOne;
-						renderer.draw(&board)?;
-						continue 'running;
-					}
 					_ => {}
 				},
 				Event::MouseButtonDown { x, y, .. } => {
@@ -53,12 +47,7 @@ fn main() -> Result<(), String> {
 						PlayerTurn::PlayerOne => { turn = PlayerTurn::PlayerTwo; },
 						PlayerTurn::PlayerTwo => { turn = PlayerTurn::PlayerOne; },
 						PlayerTurn::GameOver => {
-							match winner.winner {
-								Winner::PlayerOne => { println!("Player 1 wins!") },
-								Winner::PlayerTwo => { println!("Player 2 wins!") },
-								_ => {},
-							}
-							break 'running;
+							println!("{:?}", winner)
 						},
 					}
 				}
