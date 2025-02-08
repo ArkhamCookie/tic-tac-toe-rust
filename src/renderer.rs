@@ -1,10 +1,10 @@
+use crate::board::{Board, Slot};
+use crate::turn::PlayerTurn;
+
 use sdl2::pixels::Color;
 use sdl2::rect::Rect;
 use sdl2::render::WindowCanvas;
 use sdl2::video::Window;
-
-use crate::board::{Board, Slot};
-use crate::turn::PlayerTurn;
 
 /// Point on screen
 pub struct Point(pub i32, pub i32);
