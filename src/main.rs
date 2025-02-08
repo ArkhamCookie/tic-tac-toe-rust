@@ -51,10 +51,12 @@ fn main() -> Result<(), String> {
 						}
 						PlayerTurn::GameOver => match winner.winner {
 							Winner::PlayerOne => {
-								println!("Player 1 wins!")
+								println!("Player 1 wins!");
+								break 'running;
 							}
 							Winner::PlayerTwo => {
-								println!("Player 2 wins!")
+								println!("Player 2 wins!");
+								break 'running;
 							}
 							Winner::None => {}
 						},
