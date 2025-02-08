@@ -1,8 +1,8 @@
 use tic_tac_toe::board::Board;
+use tic_tac_toe::renderer::Renderer;
 
 use sdl2::event::Event;
 use sdl2::keyboard::Keycode;
-use tic_tac_toe::renderer::Renderer;
 
 fn main() -> Result<(), String> {
 	let sdl_context = sdl2::init()?;
