@@ -1,6 +1,7 @@
 use crate::board::Board;
 use crate::turn::PlayerTurn;
 
+/// Run when a player clicks the board
 pub fn click(board: &Board, turn: &PlayerTurn, x_coord: i32, y_coord: i32) -> Result<Board, String> {
 	let slot = get_slot(x_coord, y_coord).unwrap();
 
@@ -11,6 +12,7 @@ pub fn click(board: &Board, turn: &PlayerTurn, x_coord: i32, y_coord: i32) -> Re
 	Ok(board.clone().place(slot, turn))
 }
 
+/// Get slot based on coords
 fn get_slot(x_coord: i32, y_coord: i32) -> Option<usize> {
 	if x_coord > 0 && x_coord < 400 {
 		if y_coord > 0 && y_coord < 395 {
