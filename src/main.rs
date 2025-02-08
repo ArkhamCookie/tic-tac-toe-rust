@@ -2,6 +2,7 @@ use tic_tac_toe::board::Board;
 use tic_tac_toe::click;
 use tic_tac_toe::renderer::Renderer;
 use tic_tac_toe::turn::PlayerTurn;
+use tic_tac_toe::winner::{check_winner, Winner};
 
 use sdl2::event::Event;
 use sdl2::keyboard::Keycode;
@@ -35,10 +36,19 @@ fn main() -> Result<(), String> {
 				Event::MouseButtonDown { x, y, .. } => {
 					board = click::click(&board, &turn, x, y);
 
-					if turn == PlayerTurn::PlayerOne {
-						turn = PlayerTurn::PlayerTwo;
-					} else if turn == PlayerTurn::PlayerTwo {
-						turn = PlayerTurn::PlayerOne;
+					// let winner = check_winner(&board);
+					let winner = check_winner(&board);
+
+					if winner.winner != Winner::None {
+						turn = PlayerTurn::GameOver;
+					}
+
+					match turn {
+						PlayerTurn::PlayerOne => { turn = PlayerTurn::PlayerTwo; },
+						PlayerTurn::PlayerTwo => { turn = PlayerTurn::PlayerOne; },
+						PlayerTurn::GameOver => {
+							println!("{:?}", winner)
+						},
 					}
 				}
 				_ => {}
