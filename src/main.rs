@@ -36,7 +36,6 @@ fn main() -> Result<(), String> {
 				Event::MouseButtonDown { x, y, .. } => {
 					board = click(&board, &turn, x, y);
 
-					// let winner = check_winner(&board);
 					let winner = check_winner(&board);
 
 					if winner.winner != Winner::None {
