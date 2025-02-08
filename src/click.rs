@@ -1,10 +1,14 @@
 use crate::board::Board;
 use crate::turn::PlayerTurn;
 
-pub fn click(board: &Board, turn: &PlayerTurn, x_coord: i32, y_coord: i32) -> Board {
+pub fn click(board: &Board, turn: &PlayerTurn, x_coord: i32, y_coord: i32) -> Result<Board, String> {
 	let slot = get_slot(x_coord, y_coord).unwrap();
 
-	board.clone().place(slot, turn)
+	if !board.slot_available(slot) {
+		return Err(String::from("slot not available"));
+	}
+
+	Ok(board.clone().place(slot, turn))
 }
 
 fn get_slot(x_coord: i32, y_coord: i32) -> Option<usize> {
