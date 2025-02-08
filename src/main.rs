@@ -58,7 +58,7 @@ fn main() -> Result<(), String> {
 								println!("Player 2 wins!");
 								break 'running;
 							}
-							Winner::None => {}
+							Winner::None => {},
 						},
 					}
 				}
