@@ -34,32 +34,34 @@ fn main() -> Result<(), String> {
 					_ => {}
 				},
 				Event::MouseButtonDown { x, y, .. } => {
-					board = click(&board, &turn, x, y);
+					if click(&board, &turn, x, y) != Err(String::from("slot not available")) {
+						board = click(&board, &turn, x, y)?;
 
-					let winner = check_winner(&board);
+						let winner = check_winner(&board);
 
-					if winner.winner != Winner::None {
-						turn = PlayerTurn::GameOver;
-					}
-
-					match turn {
-						PlayerTurn::PlayerOne => {
-							turn = PlayerTurn::PlayerTwo;
+						if winner.winner != Winner::None {
+							turn = PlayerTurn::GameOver;
 						}
-						PlayerTurn::PlayerTwo => {
-							turn = PlayerTurn::PlayerOne;
+
+						match turn {
+							PlayerTurn::PlayerOne => {
+								turn = PlayerTurn::PlayerTwo;
+							}
+							PlayerTurn::PlayerTwo => {
+								turn = PlayerTurn::PlayerOne;
+							}
+							PlayerTurn::GameOver => match winner.winner {
+								Winner::PlayerOne => {
+									println!("Player 1 wins!");
+									break 'running;
+								}
+								Winner::PlayerTwo => {
+									println!("Player 2 wins!");
+									break 'running;
+								}
+								Winner::None => {}
+							},
 						}
-						PlayerTurn::GameOver => match winner.winner {
-							Winner::PlayerOne => {
-								println!("Player 1 wins!");
-								break 'running;
-							}
-							Winner::PlayerTwo => {
-								println!("Player 2 wins!");
-								break 'running;
-							}
-							Winner::None => {}
-						},
 					}
 				}
 				_ => {}
