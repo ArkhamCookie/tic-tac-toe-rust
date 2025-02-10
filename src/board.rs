@@ -9,7 +9,7 @@ pub enum Slot {
 }
 
 /// Tic-tac-toe board
-#[derive(Clone, Debug, Default)]
+#[derive(Clone, Debug, Default, PartialEq)]
 pub struct Board {
 	/// Slots on board
 	slots: Vec<Slot>,

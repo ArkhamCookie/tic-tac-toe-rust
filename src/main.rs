@@ -42,14 +42,19 @@ fn main() -> Result<(), String> {
 					_ => {},
 				},
 				Event::MouseButtonDown { x, y, .. } => {
-					board = click(&board, &turn, x, y);
+					// Confirm click was on an empty slot
+					if click(&board, &turn, x, y) == Err(String::from("slot not available")) {
+						continue 'running;
+					}
+					board = click(&board, &turn, x, y)?;
 
+					// Check if there is a winner
 					let winner = check_winner(&board);
-
 					if winner.winner != Winner::None {
 						turn = PlayerTurn::GameOver;
 					}
 
+					// Handle switching turns & game overs
 					match turn {
 						PlayerTurn::PlayerOne => {
 							turn = PlayerTurn::PlayerTwo;
@@ -66,7 +71,7 @@ fn main() -> Result<(), String> {
 								println!("Player 2 wins!");
 								break 'running;
 							}
-							Winner::None => {},
+							Winner::None => {}
 						},
 					}
 				}
