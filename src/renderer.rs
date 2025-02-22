@@ -122,6 +122,9 @@ impl Renderer {
 
 	/// Draw everything to screen
 	pub fn draw(&mut self, board: &Board) -> Result<(), String> {
+		self.canvas.set_draw_color(Color::BLACK);
+		self.canvas.clear();
+
 		self.draw_board()?;
 		self.draw_state(board)?;
 
