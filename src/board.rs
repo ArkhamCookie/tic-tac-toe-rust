@@ -9,10 +9,10 @@ pub enum Slot {
 }
 
 /// Tic-tac-toe board
-#[derive(Clone, Debug, Default, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub struct Board {
 	/// Slots on board
-	slots: Vec<Slot>,
+	slots: [Slot; 9],
 }
 
 impl Board {
@@ -28,7 +28,7 @@ impl Board {
 
 					// Update display
 					Self {
-						slots: new_slots.to_vec(),
+						slots: *new_slots,
 					}
 				}
 				PlayerTurn::PlayerTwo => {
@@ -37,7 +37,7 @@ impl Board {
 
 					// Update display
 					Self {
-						slots: new_slots.to_vec(),
+						slots: *new_slots,
 					}
 				}
 				PlayerTurn::GameOver => {
@@ -46,23 +46,19 @@ impl Board {
 				}
 			}
 		} else {
-			// Do nothing (since not a vaild slot)
+			// Do nothing (since not a valid slot)
 			Self { slots: self.slots }
 		}
 	}
 
 	/// Get value of slots
-	pub fn get_slots(&self) -> Vec<Slot> {
-		self.slots.clone()
+	pub fn get_slots(&self) -> [Slot; 9] {
+		self.slots
 	}
 
 	/// Create an empty board
 	pub fn new() -> Self {
-		let mut slots = Vec::new();
-
-		for _ in 0..9 {
-			slots.push(Slot::Empty);
-		}
+		let mut slots = [Slot::Empty; 9];
 
 		Self { slots }
 	}
