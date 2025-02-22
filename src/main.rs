@@ -78,8 +78,9 @@ fn main() -> Result<(), String> {
 				_ => {}
 			}
 
-			renderer.draw(&board)?;
 		}
+		
+		renderer.draw(&board)?;
 	}
 
 	Ok(())
