@@ -30,8 +30,16 @@ fn main() -> Result<(), String> {
 					keycode: Some(keycode),
 					..
 				} => match keycode {
-					Keycode::Escape => break 'running,
-					_ => {}
+					Keycode::Escape => {
+						break 'running;
+					}
+					Keycode::R => {
+						board = Board::new();
+						turn = PlayerTurn::PlayerOne;
+						renderer.draw(&board)?;
+						continue 'running;
+					},
+					_ => {},
 				},
 				Event::MouseButtonDown { x, y, .. } => {
 					// Confirm click was on an empty slot
