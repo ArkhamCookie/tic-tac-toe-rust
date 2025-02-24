@@ -2,6 +2,7 @@ use crate::board::{Board, Slot};
 use crate::turn::PlayerTurn;
 
 use sdl2::pixels::Color;
+use sdl2::rect::Point as SDLPoint;
 use sdl2::rect::Rect;
 use sdl2::render::WindowCanvas;
 use sdl2::video::Window;
@@ -51,6 +52,48 @@ impl Renderer {
 
 		self.draw_horizontal_line(1000, &Point(100, 400))?;
 		self.draw_horizontal_line(1000, &Point(100, 800))?;
+
+		Ok(())
+	}
+
+	/// Draw a circle piece
+	fn draw_cirle(&mut self, center: SDLPoint) -> Result<(), String> {
+		let radius = 100;
+
+		let mut x = radius;
+		let mut y = 0;
+
+		let mut re = x * x + y * y - radius * radius;
+
+		while x >= y {
+			self.canvas
+				.draw_point(SDLPoint::new(center.x + x, center.y + y))?;
+			self.canvas
+				.draw_point(SDLPoint::new(center.x + y, center.y + x))?;
+
+			self.canvas
+				.draw_point(SDLPoint::new(center.x + x, center.y - y))?;
+			self.canvas
+				.draw_point(SDLPoint::new(center.x + y, center.y - x))?;
+
+			self.canvas
+				.draw_point(SDLPoint::new(center.x - x, center.y + y))?;
+			self.canvas
+				.draw_point(SDLPoint::new(center.x - y, center.y + x))?;
+
+			self.canvas
+				.draw_point(SDLPoint::new(center.x - x, center.y - y))?;
+			self.canvas
+				.draw_point(SDLPoint::new(center.x - y, center.y - x))?;
+
+			if 2 * (re + 2 * y + 1) + 1 - 2 * x > 0 {
+				re += 1 - 2 * x;
+				x -= 1;
+			}
+
+			re += 2 * y + 1;
+			y += 1;
+		}
 
 		Ok(())
 	}
