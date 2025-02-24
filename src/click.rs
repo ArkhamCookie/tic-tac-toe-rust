@@ -2,7 +2,12 @@ use crate::board::Board;
 use crate::turn::PlayerTurn;
 
 /// Run when a player clicks the board
-pub fn click(board: &Board, turn: &PlayerTurn, x_coord: i32, y_coord: i32) -> Result<Board, String> {
+pub fn click(
+	board: &Board,
+	turn: &PlayerTurn,
+	x_coord: i32,
+	y_coord: i32,
+) -> Result<Board, String> {
 	let slot = get_slot(x_coord, y_coord).unwrap();
 
 	if !board.slot_available(slot) {
