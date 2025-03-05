@@ -58,7 +58,7 @@ impl Board {
 
 	/// Create an empty board
 	pub fn new() -> Self {
-		let mut slots = [Slot::Empty; 9];
+		let slots = [Slot::Empty; 9];
 
 		Self { slots }
 	}
