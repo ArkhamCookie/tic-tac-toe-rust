@@ -98,6 +98,14 @@ impl Renderer {
 		Ok(())
 	}
 
+	/// Draw cross piece
+	fn draw_cross(&mut self, center: SDLPoint) -> Result<(), String> {
+		self.canvas.draw_line(SDLPoint::new(center.x - 100, center.y - 125), SDLPoint::new(center.x + 100, center.y + 125))?;
+		self.canvas.draw_line(SDLPoint::new(center.x + 100, center.y - 125), SDLPoint::new(center.x - 100, center.y + 125))?;
+
+		Ok(())
+	}
+
 	/// Draw player's piece
 	fn draw_player(&mut self, slot: usize, player: PlayerTurn) -> Result<(), String> {
 		match player {
