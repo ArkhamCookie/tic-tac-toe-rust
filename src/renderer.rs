@@ -2,13 +2,10 @@ use crate::board::{Board, Slot};
 use crate::turn::PlayerTurn;
 
 use sdl2::pixels::Color;
-use sdl2::rect::Point as SDLPoint;
+use sdl2::rect::Point;
 use sdl2::rect::Rect;
 use sdl2::render::WindowCanvas;
 use sdl2::video::Window;
-
-/// Point on screen
-pub struct Point(pub i32, pub i32);
 
 /// Renderer for screen
 pub struct Renderer {
@@ -28,36 +25,38 @@ impl Renderer {
 
 	/// Draw a horizontal line
 	fn draw_horizontal_line(&mut self, length: u32, point: &Point) -> Result<(), String> {
-		let Point(x, y) = point;
+		let x = point.x;
+		let y = point.y;
 
-		self.canvas.fill_rect(Rect::new(*x, *y, length, 10))?;
+		self.canvas.fill_rect(Rect::new(x, y, length, 10))?;
 
 		Ok(())
 	}
 
 	/// Draw a vertical line
 	fn draw_vertical_line(&mut self, length: u32, point: &Point) -> Result<(), String> {
-		let Point(x, y) = point;
+		let x = point.x;
+		let y = point.y;
 
 		self.canvas.set_draw_color(Color::WHITE);
-		self.canvas.fill_rect(Rect::new(*x, *y, 10, length))?;
+		self.canvas.fill_rect(Rect::new(x, y, 10, length))?;
 
 		Ok(())
 	}
 
 	/// Draw the board
 	fn draw_board(&mut self) -> Result<(), String> {
-		self.draw_vertical_line(1000, &Point(400, 100))?;
-		self.draw_vertical_line(1000, &Point(800, 100))?;
+		self.draw_vertical_line(1000, &Point::new(400, 100))?;
+		self.draw_vertical_line(1000, &Point::new(800, 100))?;
 
-		self.draw_horizontal_line(1000, &Point(100, 400))?;
-		self.draw_horizontal_line(1000, &Point(100, 800))?;
+		self.draw_horizontal_line(1000, &Point::new(100, 400))?;
+		self.draw_horizontal_line(1000, &Point::new(100, 800))?;
 
 		Ok(())
 	}
 
 	/// Draw a circle piece
-	fn draw_cirle(&mut self, center: SDLPoint) -> Result<(), String> {
+	fn draw_cirle(&mut self, center: Point) -> Result<(), String> {
 		let radius = 100;
 
 		let mut x = radius;
@@ -67,24 +66,24 @@ impl Renderer {
 
 		while x >= y {
 			self.canvas
-				.draw_point(SDLPoint::new(center.x + x, center.y + y))?;
+				.draw_point(Point::new(center.x + x, center.y + y))?;
 			self.canvas
-				.draw_point(SDLPoint::new(center.x + y, center.y + x))?;
+				.draw_point(Point::new(center.x + y, center.y + x))?;
 
 			self.canvas
-				.draw_point(SDLPoint::new(center.x + x, center.y - y))?;
+				.draw_point(Point::new(center.x + x, center.y - y))?;
 			self.canvas
-				.draw_point(SDLPoint::new(center.x + y, center.y - x))?;
+				.draw_point(Point::new(center.x + y, center.y - x))?;
 
 			self.canvas
-				.draw_point(SDLPoint::new(center.x - x, center.y + y))?;
+				.draw_point(Point::new(center.x - x, center.y + y))?;
 			self.canvas
-				.draw_point(SDLPoint::new(center.x - y, center.y + x))?;
+				.draw_point(Point::new(center.x - y, center.y + x))?;
 
 			self.canvas
-				.draw_point(SDLPoint::new(center.x - x, center.y - y))?;
+				.draw_point(Point::new(center.x - x, center.y - y))?;
 			self.canvas
-				.draw_point(SDLPoint::new(center.x - y, center.y - x))?;
+				.draw_point(Point::new(center.x - y, center.y - x))?;
 
 			if 2 * (re + 2 * y + 1) + 1 - 2 * x > 0 {
 				re += 1 - 2 * x;
@@ -99,9 +98,9 @@ impl Renderer {
 	}
 
 	/// Draw cross piece
-	fn draw_cross(&mut self, center: SDLPoint) -> Result<(), String> {
-		self.canvas.draw_line(SDLPoint::new(center.x - 100, center.y - 125), SDLPoint::new(center.x + 100, center.y + 125))?;
-		self.canvas.draw_line(SDLPoint::new(center.x + 100, center.y - 125), SDLPoint::new(center.x - 100, center.y + 125))?;
+	fn draw_cross(&mut self, center: Point) -> Result<(), String> {
+		self.canvas.draw_line(Point::new(center.x - 100, center.y - 125), Point::new(center.x + 100, center.y + 125))?;
+		self.canvas.draw_line(Point::new(center.x + 100, center.y - 125), Point::new(center.x - 100, center.y + 125))?;
 
 		Ok(())
 	}
@@ -121,82 +120,82 @@ impl Renderer {
 		match slot {
 			0 => match player {
 				PlayerTurn::PlayerOne => {
-					self.draw_cirle(SDLPoint::new(250, 250))?;
+					self.draw_cirle(Point::new(250, 250))?;
 				}
 				PlayerTurn::PlayerTwo => {
-					self.draw_cross(SDLPoint::new(250, 250))?;
+					self.draw_cross(Point::new(250, 250))?;
 				}
 				_ => {}
 			},
 			1 => match player {
 				PlayerTurn::PlayerOne => {
-					self.draw_cirle(SDLPoint::new(600, 250))?;
+					self.draw_cirle(Point::new(600, 250))?;
 				}
 				PlayerTurn::PlayerTwo => {
-					self.draw_cross(SDLPoint::new(600, 250))?;
+					self.draw_cross(Point::new(600, 250))?;
 				}
 				_ => {}
 			}
 			2 => match player {
 				PlayerTurn::PlayerOne => {
-					self.draw_cirle(SDLPoint::new(950, 250))?;
+					self.draw_cirle(Point::new(950, 250))?;
 				}
 				PlayerTurn::PlayerTwo => {
-					self.draw_cross(SDLPoint::new(950, 250))?;
+					self.draw_cross(Point::new(950, 250))?;
 				}
 				_ => {}
 			}
 			3 => match player {
 				PlayerTurn::PlayerOne => {
-					self.draw_cirle(SDLPoint::new(250, 600))?;
+					self.draw_cirle(Point::new(250, 600))?;
 				}
 				PlayerTurn::PlayerTwo => {
-					self.draw_cross(SDLPoint::new(250, 600))?;
+					self.draw_cross(Point::new(250, 600))?;
 				}
 				_ => {}
 			}
 			4 => match player {
 				PlayerTurn::PlayerOne => {
-					self.draw_cirle(SDLPoint::new(600, 600))?;
+					self.draw_cirle(Point::new(600, 600))?;
 				}
 				PlayerTurn::PlayerTwo => {
-					self.draw_cross(SDLPoint::new(600, 600))?;
+					self.draw_cross(Point::new(600, 600))?;
 				}
 				_ => {}
 			}
 			5 => match player {
 				PlayerTurn::PlayerOne => {
-					self.draw_cirle(SDLPoint::new(950, 600))?;
+					self.draw_cirle(Point::new(950, 600))?;
 				}
 				PlayerTurn::PlayerTwo => {
-					self.draw_cross(SDLPoint::new(950, 600))?;
+					self.draw_cross(Point::new(950, 600))?;
 				}
 				_ => {}
 			}
 			6 => match player {
 				PlayerTurn::PlayerOne => {
-					self.draw_cirle(SDLPoint::new(250, 950))?;
+					self.draw_cirle(Point::new(250, 950))?;
 				}
 				PlayerTurn::PlayerTwo => {
-					self.draw_cross(SDLPoint::new(250, 950))?;
+					self.draw_cross(Point::new(250, 950))?;
 				}
 				_ => {}
 			}
 			7 => match player {
 				PlayerTurn::PlayerOne => {
-					self.draw_cirle(SDLPoint::new(600, 950))?;
+					self.draw_cirle(Point::new(600, 950))?;
 				}
 				PlayerTurn::PlayerTwo => {
-					self.draw_cross(SDLPoint::new(600, 950))?;
+					self.draw_cross(Point::new(600, 950))?;
 				}
 				_ => {}
 			}
 			8 => match player {
 				PlayerTurn::PlayerOne => {
-					self.draw_cirle(SDLPoint::new(950, 950))?;
+					self.draw_cirle(Point::new(950, 950))?;
 				}
 				PlayerTurn::PlayerTwo => {
-					self.draw_cross(SDLPoint::new(950, 950))?;
+					self.draw_cross(Point::new(950, 950))?;
 				}
 				_ => {}
 			}
