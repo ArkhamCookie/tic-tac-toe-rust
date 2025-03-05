@@ -38,8 +38,8 @@ fn main() -> Result<(), String> {
 						turn = PlayerTurn::PlayerOne;
 						renderer.draw(&board)?;
 						continue 'running;
-					},
-					_ => {},
+					}
+					_ => {}
 				},
 				Event::MouseButtonDown { x, y, .. } => {
 					// Confirm click was on an empty slot
@@ -77,9 +77,8 @@ fn main() -> Result<(), String> {
 				}
 				_ => {}
 			}
-
 		}
-		
+
 		renderer.draw(&board)?;
 	}
 

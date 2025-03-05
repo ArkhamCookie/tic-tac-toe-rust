@@ -99,8 +99,14 @@ impl Renderer {
 
 	/// Draw cross piece
 	fn draw_cross(&mut self, center: Point) -> Result<(), String> {
-		self.canvas.draw_line(Point::new(center.x - 100, center.y - 125), Point::new(center.x + 100, center.y + 125))?;
-		self.canvas.draw_line(Point::new(center.x + 100, center.y - 125), Point::new(center.x - 100, center.y + 125))?;
+		self.canvas.draw_line(
+			Point::new(center.x - 100, center.y - 125),
+			Point::new(center.x + 100, center.y + 125),
+		)?;
+		self.canvas.draw_line(
+			Point::new(center.x + 100, center.y - 125),
+			Point::new(center.x - 100, center.y + 125),
+		)?;
 
 		Ok(())
 	}
@@ -135,7 +141,7 @@ impl Renderer {
 					self.draw_cross(Point::new(600, 250))?;
 				}
 				_ => {}
-			}
+			},
 			2 => match player {
 				PlayerTurn::PlayerOne => {
 					self.draw_cirle(Point::new(950, 250))?;
@@ -144,7 +150,7 @@ impl Renderer {
 					self.draw_cross(Point::new(950, 250))?;
 				}
 				_ => {}
-			}
+			},
 			3 => match player {
 				PlayerTurn::PlayerOne => {
 					self.draw_cirle(Point::new(250, 600))?;
@@ -153,7 +159,7 @@ impl Renderer {
 					self.draw_cross(Point::new(250, 600))?;
 				}
 				_ => {}
-			}
+			},
 			4 => match player {
 				PlayerTurn::PlayerOne => {
 					self.draw_cirle(Point::new(600, 600))?;
@@ -162,7 +168,7 @@ impl Renderer {
 					self.draw_cross(Point::new(600, 600))?;
 				}
 				_ => {}
-			}
+			},
 			5 => match player {
 				PlayerTurn::PlayerOne => {
 					self.draw_cirle(Point::new(950, 600))?;
@@ -171,7 +177,7 @@ impl Renderer {
 					self.draw_cross(Point::new(950, 600))?;
 				}
 				_ => {}
-			}
+			},
 			6 => match player {
 				PlayerTurn::PlayerOne => {
 					self.draw_cirle(Point::new(250, 950))?;
@@ -180,7 +186,7 @@ impl Renderer {
 					self.draw_cross(Point::new(250, 950))?;
 				}
 				_ => {}
-			}
+			},
 			7 => match player {
 				PlayerTurn::PlayerOne => {
 					self.draw_cirle(Point::new(600, 950))?;
@@ -189,7 +195,7 @@ impl Renderer {
 					self.draw_cross(Point::new(600, 950))?;
 				}
 				_ => {}
-			}
+			},
 			8 => match player {
 				PlayerTurn::PlayerOne => {
 					self.draw_cirle(Point::new(950, 950))?;
@@ -198,7 +204,7 @@ impl Renderer {
 					self.draw_cross(Point::new(950, 950))?;
 				}
 				_ => {}
-			}
+			},
 			_ => {}
 		}
 
@@ -209,7 +215,7 @@ impl Renderer {
 	fn draw_state(&mut self, board: &Board) -> Result<(), String> {
 		let slots = board.get_slots();
 
-		for i in 0..9 {
+		for (i, _) in slots.iter().enumerate() {
 			match slots[i] {
 				Slot::PlayerOne => {
 					self.draw_player(i, PlayerTurn::PlayerOne)?;

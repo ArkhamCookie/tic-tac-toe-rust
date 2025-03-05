@@ -27,18 +27,14 @@ impl Board {
 					new_slots[slot] = Slot::PlayerOne;
 
 					// Update display
-					Self {
-						slots: *new_slots,
-					}
+					Self { slots: *new_slots }
 				}
 				PlayerTurn::PlayerTwo => {
 					let new_slots = &mut self.get_slots();
 					new_slots[slot] = Slot::PlayerTwo;
 
 					// Update display
-					Self {
-						slots: *new_slots,
-					}
+					Self { slots: *new_slots }
 				}
 				PlayerTurn::GameOver => {
 					// Do nothing (since game is over)
@@ -58,7 +54,7 @@ impl Board {
 
 	/// Create an empty board
 	pub fn new() -> Self {
-		let mut slots = [Slot::Empty; 9];
+		let slots = [Slot::Empty; 9];
 
 		Self { slots }
 	}
@@ -73,6 +69,12 @@ impl Board {
 		}
 
 		false
+	}
+}
+
+impl Default for Board {
+	fn default() -> Self {
+		Self::new()
 	}
 }
 
