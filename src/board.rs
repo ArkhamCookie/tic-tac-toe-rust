@@ -72,6 +72,12 @@ impl Board {
 	}
 }
 
+impl Default for Board {
+	fn default() -> Self {
+		Self::new()
+	}
+}
+
 #[cfg(test)]
 mod tests {
 	use crate::board::{Board, Slot};
