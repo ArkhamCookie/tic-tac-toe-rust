@@ -215,7 +215,7 @@ impl Renderer {
 	fn draw_state(&mut self, board: &Board) -> Result<(), String> {
 		let slots = board.get_slots();
 
-		for i in 0..9 {
+		for (i, _) in slots.iter().enumerate() {
 			match slots[i] {
 				Slot::PlayerOne => {
 					self.draw_player(i, PlayerTurn::PlayerOne)?;
