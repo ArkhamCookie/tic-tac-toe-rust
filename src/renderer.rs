@@ -119,32 +119,86 @@ impl Renderer {
 		}
 
 		match slot {
-			0 => {
-				self.canvas.fill_rect(Rect::new(150, 150, 100, 100))?;
+			0 => match player {
+				PlayerTurn::PlayerOne => {
+					self.draw_cirle(SDLPoint::new(250, 250))?;
+				}
+				PlayerTurn::PlayerTwo => {
+					self.draw_cross(SDLPoint::new(250, 250))?;
+				}
+				_ => {}
+			},
+			1 => match player {
+				PlayerTurn::PlayerOne => {
+					self.draw_cirle(SDLPoint::new(600, 250))?;
+				}
+				PlayerTurn::PlayerTwo => {
+					self.draw_cross(SDLPoint::new(600, 250))?;
+				}
+				_ => {}
 			}
-			1 => {
-				self.canvas.fill_rect(Rect::new(550, 150, 100, 100))?;
+			2 => match player {
+				PlayerTurn::PlayerOne => {
+					self.draw_cirle(SDLPoint::new(950, 250))?;
+				}
+				PlayerTurn::PlayerTwo => {
+					self.draw_cross(SDLPoint::new(950, 250))?;
+				}
+				_ => {}
 			}
-			2 => {
-				self.canvas.fill_rect(Rect::new(950, 150, 100, 100))?;
+			3 => match player {
+				PlayerTurn::PlayerOne => {
+					self.draw_cirle(SDLPoint::new(250, 600))?;
+				}
+				PlayerTurn::PlayerTwo => {
+					self.draw_cross(SDLPoint::new(250, 600))?;
+				}
+				_ => {}
 			}
-			3 => {
-				self.canvas.fill_rect(Rect::new(150, 550, 100, 100))?;
+			4 => match player {
+				PlayerTurn::PlayerOne => {
+					self.draw_cirle(SDLPoint::new(600, 600))?;
+				}
+				PlayerTurn::PlayerTwo => {
+					self.draw_cross(SDLPoint::new(600, 600))?;
+				}
+				_ => {}
 			}
-			4 => {
-				self.canvas.fill_rect(Rect::new(550, 550, 100, 100))?;
+			5 => match player {
+				PlayerTurn::PlayerOne => {
+					self.draw_cirle(SDLPoint::new(950, 600))?;
+				}
+				PlayerTurn::PlayerTwo => {
+					self.draw_cross(SDLPoint::new(950, 600))?;
+				}
+				_ => {}
 			}
-			5 => {
-				self.canvas.fill_rect(Rect::new(950, 550, 100, 100))?;
+			6 => match player {
+				PlayerTurn::PlayerOne => {
+					self.draw_cirle(SDLPoint::new(250, 950))?;
+				}
+				PlayerTurn::PlayerTwo => {
+					self.draw_cross(SDLPoint::new(250, 950))?;
+				}
+				_ => {}
 			}
-			6 => {
-				self.canvas.fill_rect(Rect::new(150, 950, 100, 100))?;
+			7 => match player {
+				PlayerTurn::PlayerOne => {
+					self.draw_cirle(SDLPoint::new(600, 950))?;
+				}
+				PlayerTurn::PlayerTwo => {
+					self.draw_cross(SDLPoint::new(600, 950))?;
+				}
+				_ => {}
 			}
-			7 => {
-				self.canvas.fill_rect(Rect::new(550, 950, 100, 100))?;
-			}
-			8 => {
-				self.canvas.fill_rect(Rect::new(950, 950, 100, 100))?;
+			8 => match player {
+				PlayerTurn::PlayerOne => {
+					self.draw_cirle(SDLPoint::new(950, 950))?;
+				}
+				PlayerTurn::PlayerTwo => {
+					self.draw_cross(SDLPoint::new(950, 950))?;
+				}
+				_ => {}
 			}
 			_ => {}
 		}
