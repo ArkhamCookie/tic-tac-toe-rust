@@ -7,9 +7,6 @@ use sdl2::rect::Rect;
 use sdl2::render::WindowCanvas;
 use sdl2::video::Window;
 
-/// Point on screen
-pub struct Point(pub i32, pub i32);
-
 /// Renderer for screen
 pub struct Renderer {
 	canvas: WindowCanvas,
@@ -27,31 +24,33 @@ impl Renderer {
 	}
 
 	/// Draw a horizontal line
-	fn draw_horizontal_line(&mut self, length: u32, point: &Point) -> Result<(), String> {
-		let Point(x, y) = point;
+	fn draw_horizontal_line(&mut self, length: u32, point: &SDLPoint) -> Result<(), String> {
+		let x = point.x;
+		let y = point.y;
 
-		self.canvas.fill_rect(Rect::new(*x, *y, length, 10))?;
+		self.canvas.fill_rect(Rect::new(x, y, length, 10))?;
 
 		Ok(())
 	}
 
 	/// Draw a vertical line
-	fn draw_vertical_line(&mut self, length: u32, point: &Point) -> Result<(), String> {
-		let Point(x, y) = point;
+	fn draw_vertical_line(&mut self, length: u32, point: &SDLPoint) -> Result<(), String> {
+		let x = point.x;
+		let y = point.y;
 
 		self.canvas.set_draw_color(Color::WHITE);
-		self.canvas.fill_rect(Rect::new(*x, *y, 10, length))?;
+		self.canvas.fill_rect(Rect::new(x, y, 10, length))?;
 
 		Ok(())
 	}
 
 	/// Draw the board
 	fn draw_board(&mut self) -> Result<(), String> {
-		self.draw_vertical_line(1000, &Point(400, 100))?;
-		self.draw_vertical_line(1000, &Point(800, 100))?;
+		self.draw_vertical_line(1000, &SDLPoint::new(400, 100))?;
+		self.draw_vertical_line(1000, &SDLPoint::new(800, 100))?;
 
-		self.draw_horizontal_line(1000, &Point(100, 400))?;
-		self.draw_horizontal_line(1000, &Point(100, 800))?;
+		self.draw_horizontal_line(1000, &SDLPoint::new(100, 400))?;
+		self.draw_horizontal_line(1000, &SDLPoint::new(100, 800))?;
 
 		Ok(())
 	}
