@@ -30,6 +30,7 @@ impl Board {
 					Self { slots: *new_slots }
 				}
 				PlayerTurn::PlayerTwo => {
+					// Update slots
 					let new_slots = &mut self.get_slots();
 					new_slots[slot] = Slot::PlayerTwo;
 
